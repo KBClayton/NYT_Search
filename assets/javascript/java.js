@@ -28,6 +28,15 @@ $(document).ready(function() {
       {
           results=response.response.docs;
           console.log(results);
+          $("#search").on("click", function(){
+              var search = $(".form-control").val();
+              console.log(search)
+
+              
+
+
+
+          })
           for(var i=0; i<results.length; i++)
           {
             console.log(results[i].headline.kicker);
