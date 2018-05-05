@@ -4,11 +4,11 @@ $(document).ready(function() {
     var fqstring="afganistan";
     //Format: YYYYMMDD
     var bdate="20010801";
-    var edate="20011101";
+    var edate="20101101";
     //newest or oldest
     var sort="oldest";
     var results;
-
+    var number_results=10;
 
     //building the queryurl
     queryURL+= '?' + $.param({
@@ -24,8 +24,7 @@ $(document).ready(function() {
     $.ajax({
         url: queryURL,
         method: "GET"
-      }).then(function(response) 
-      {
+      }).then(function(response) {
           results=response.response.docs;
           console.log(results);
           $("#search").on("click", function(){
@@ -41,11 +40,23 @@ $(document).ready(function() {
           {
             console.log(results[i].headline.kicker);
             console.log(results[i].headline.main);
-            console.log(results[i].byline.original);
               console.log(results[i].abstract);
               console.log(results[i].web_url);
               console.log(results[i].snippet);
+              var storydiv=$("<div>");
+              console.log(i);
+              if (results[i].byline==undefined){
+                  console.log("case byline undefined");
+              storydiv.html("<h3><a href='"+results[i].web_url+"' target='_blank'>"+results[i].headline.main+"</a></h3><p>"+results[i].snippet+"</p>");
+              }
+              else if (results[i].byline!==undefined){
+                console.log("case byline present");
+                storydiv.html("<h3><a href='"+results[i].web_url+"' target='_blank'>"+results[i].headline.main+"</a></h3><h6>"+results[i].byline.original+"</h6><p>"+results[i].snippet+"</p>");
+              }
+              $("#results").append(storydiv);    
           }
+      }).fail(function(err) {
+        throw err;
       });
 
 
