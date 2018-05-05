@@ -8,6 +8,7 @@ $(document).ready(function() {
     //newest or oldest
     var sort="oldest";
     var results;
+    var number_results=10;
 
 
     //building the queryurl
