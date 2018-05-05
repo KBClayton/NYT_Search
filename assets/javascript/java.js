@@ -33,10 +33,9 @@ $(document).ready(function() {
             console.log(results[i].headline.kicker);
             console.log(results[i].headline.main);
             console.log(results[i].byline.original);
-            console.log(results[i].abstract);
-            console.log(results[i].multimedia.web_url);
-            
-
+              console.log(results[i].abstract);
+              console.log(results[i].web_url);
+              console.log(results[i].snippet);
           }
       });
 
