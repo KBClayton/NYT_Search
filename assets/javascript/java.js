@@ -10,8 +10,6 @@ $(document).ready(function() {
     var results;
     var number_results=10;
 
-
-
     //building the queryurl
     queryURL+= '?' + $.param({
         'api-key': "1d7cba9250e144ab8fd63760964840f3",
