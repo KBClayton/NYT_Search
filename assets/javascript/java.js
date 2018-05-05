@@ -29,7 +29,17 @@ $(document).ready(function() {
       }).then(function(response) {
           results=response.response.docs;
           console.log(results);
-          for(var i=0; i<results.length; i++){
+          $("#search").on("click", function(){
+              var search = $(".form-control").val();
+              console.log(search)
+
+              
+
+
+
+          })
+          for(var i=0; i<results.length; i++)
+          {
             console.log(results[i].headline.kicker);
             console.log(results[i].headline.main);
             console.log(results[i].byline.original);
@@ -38,7 +48,7 @@ $(document).ready(function() {
               console.log(results[i].snippet);
               var storydiv=$("<div>");
               storydiv.html("<h3><a href='"+results[i].web_url+"'>"+results[i].headline.main+"</a></h3><h6>"+results[i].byline.original+"</h6><p>"+results[i].snippet+"</p>");
-              $("#results").append(storydiv)    
+              $("#results").append(storydiv);    
           }
       }).fail(function(err) {
         throw err;
